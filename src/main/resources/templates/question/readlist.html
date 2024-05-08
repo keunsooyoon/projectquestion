@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+<h2> Read List </h2>
+<a href="/question/create">CREATE</a><br><br>
+<th:block th:each="question: ${questions}">
+[[${question.qid}]] /
+<a th:href="@{|/question/readdetail/${question.qid}|}" th:text="${question.qtitle}"></a>
+/ [[${question.qauthor.username}]] / [[${question.qdate}]]<br>
+</th:block>
+</body>
+</html>
+ 

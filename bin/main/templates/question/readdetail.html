@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h2> Read Detail </h2>
+<a href="/question/readlist">List</a><br><br>
+[[${question.qid}]] <br>
+[[${question.qtitle}]]<br>
+[[${question.qauthor.username}]] <br>
+[[${question.qdate}]]<br>
+
+<br><br>
+<p><a th:href="@{|/question/update/${question.qid}|}"> update</a>
+
+
+<답변 작성>
+	<form action="/answer/create" method="post">
+		<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+		<input type="hidden" name="qid" th:value="${question.qid}"/>
+		<p>Content : <input type="text" name="acontent">
+		<p><input type="submit" value="답변작성">
+	</form>
+
+<답변 목록>
+
+[[${#lists.size(question.answerList)}]] 개의 답변이 있습니다.<br>
+
+<div th:each="answer : ${question.answerList}">
+
+	[[${answer.acontent}]] / 
+	[[${#temporals.format(answer.adate, 'yyyy-MM-dd HH:mm')}]] / 
+	[[${answer.aauthor.username}]]
+	<br>
+
+</div>
+
+
+</body>
+</html>

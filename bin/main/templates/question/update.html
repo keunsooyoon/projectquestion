@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+<h2>update</h2>
+<form action="/question/update" method="post">
+	<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+	<input type="hidden" name="qid" th:value="${question.qid}">
+
+	<p>Title : <input type="text" name="qtitle" th:value="${question.qtitle}">
+	<p>Content : <input type="password" name="qcontent" th:value="${question.qcontent}">
+	<p><input type="submit" value="submit">
+</form>
+</body>
+</html>
